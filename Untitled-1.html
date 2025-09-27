@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Hakimov Dilmurod — Musiqa Bot & Profil</title>
+    <meta name="description" content="Hakimov Dilmurod — musiqani topuvchi Telegram bot muallifi. Kontaktlar: @7__hakimov, 886639991. Bot: @music_dilmurodbot" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:title" content="Hakimov Dilmurod — Musiqa Bot" />
+    <meta property="og:description" content="Musiqani topuvchi Telegram bot: @music_dilmurodbot. Kontaktlar: @7__hakimov, 886639991." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="profile.jpg" />
+    <style>
+        :root{
+            --bg-1: #061018;
+            --bg-2: #082b22;
+            --accent: #12d17a;
+            --accent-2: #00b894;
+            --card: rgba(255,255,255,0.03);
+            --glass: rgba(255,255,255,0.04);
+            --muted: #9fb3aa;
+            --glass-border: rgba(255,255,255,0.06);
+            --radius: 16px;
+            --shadow-lg: 0 20px 50px rgba(2,6,12,0.7);
+            --ease: cubic-bezier(.2,.9,.2,1);
+        }
+        *{box-sizing:border-box}
+        html,body{height:100%;margin:0}
+        body{
+            font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+            background: radial-gradient(1200px 400px at 10% 10%, rgba(18,211,122,0.06), transparent 10%),
+                                    linear-gradient(135deg,var(--bg-1),var(--bg-2));
+            color:#e8fff3;
+            -webkit-font-smoothing:antialiased;
+            -moz-osx-font-smoothing:grayscale;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            padding:28px;
+        }
+        .container{
+            width:100%;
+            max-width:1150px;
+            display:grid;
+            grid-template-columns: 1fr 380px;
+            gap:24px;
+            align-items:start;
+        }
+        .card{
+            background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+            border-radius:var(--radius);
+            padding:22px;
+            box-shadow:var(--shadow-lg);
+            border:1px solid var(--glass-border);
+        }
+        .hero{
+            display:flex;
+            gap:22px;
+            align-items:flex-start;
+        }
+        .avatar-wrap{
+            width:220px;
+            min-width:160px;
+            height:220px;
+            border-radius:18px;
+            overflow:hidden;
+            position:relative;
+            transform:translateZ(0);
+            transition:transform .45s var(--ease);
+            border:1px solid rgba(255,255,255,0.04);
+            box-shadow:0 14px 40px rgba(1,6,12,0.6);
+            background: linear-gradient(180deg,#05261a,#0b3b2e);
+        }
+        .avatar-wrap:hover{ transform:translateY(-8px) scale(1.02) }
+        .avatar{
+            width:100%;
+            height:100%;
+            display:block;
+            object-fit:cover;
+            filter:contrast(1.05) saturate(1.05);
+            will-change:transform;
+            transition: transform .6s var(--ease);
+        }
+        .avatar-wrap:hover .avatar{ transform:scale(1.04) }
+        .hero-info{
+            flex:1;
+        }
+        .badge{
+            display:inline-block;
+            background: linear-gradient(90deg,var(--accent),var(--accent-2));
+            color:#04210f;
+            padding:8px 12px;
+            border-radius:999px;
+            font-weight:700;
+            font-size:13px;
+            margin-bottom:12px;
+            box-shadow:0 8px 22px rgba(18,209,122,0.12);
+        }
+        h1{
+            margin:0 0 6px 0;
+            font-size:34px;
+            letter-spacing:0.2px;
+            line-height:1.02;
+        }
+        .sub{
+            margin:0;
+            color:var(--muted);
+            font-size:14px;
+            margin-bottom:14px;
+        }
+        p.lead{
+            margin:0;
+            color:rgba(235,255,244,0.92);
+            line-height:1.6;
+            font-size:15.5px;
+        }
+        .controls{ margin-top:18px; display:flex; gap:12px; flex-wrap:wrap; align-items:center }
+        .btn{
+            display:inline-flex;
+            gap:10px;
+            align-items:center;
+            padding:10px 14px;
+            border-radius:12px;
+            border:1px solid rgba(255,255,255,0.04);
+            background:var(--card);
+            color:inherit;
+            text-decoration:none;
+            font-weight:700;
+            cursor:pointer;
+            transition:transform .18s var(--ease), box-shadow .18s var(--ease), background .18s var(--ease);
+        }
+        .btn:hover{ transform:translateY(-5px); box-shadow:0 18px 40px rgba(2,6,12,0.6) }
+        .btn.primary{
+            background: linear-gradient(90deg,var(--accent),var(--accent-2));
+            color:#04210f;
+            border:none;
+            box-shadow:0 12px 30px rgba(18,209,122,0.12);
+        }
+        .btn.ghost{ background:transparent; border:1px solid rgba(255,255,255,0.06) }
+        .info-row{ margin-top:16px; display:flex; gap:12px; flex-wrap:wrap }
+        .chip{
+            background: rgba(255,255,255,0.02);
+            padding:8px 10px;
+            border-radius:10px;
+            border:1px solid rgba(255,255,255,0.03);
+            font-weight:600;
+            color:var(--muted);
+            display:flex;
+            gap:8px;
+            align-items:center;
+        }
+        .side{
+            position:relative;
+        }
+        .side .card{ padding:18px; }
+        .side h3{ margin:0 0 8px 0; font-size:18px }
+        .contact-list{ display:flex; flex-direction:column; gap:12px; margin-top:8px }
+        .contact{
+            display:flex;
+            gap:12px;
+            align-items:center;
+            padding:10px;
+            background:var(--glass);
+            border-radius:12px;
+            border:1px solid rgba(255,255,255,0.02);
+        }
+        .contact .ico{
+            width:44px;height:44px;border-radius:10px;background:rgba(255,255,255,0.02);display:grid;place-items:center;color:var(--accent);font-weight:800;
+        }
+        .contact .meta{ font-weight:700 }
+        .contact .sub{ color:var(--muted); font-size:13px }
+        .note{ margin-top:14px; color:var(--muted); font-size:13px }
+        .toast{
+            position:fixed; left:50%; bottom:28px; transform:translateX(-50%) translateY(14px);
+            background:rgba(2,6,12,0.9); color:#dfffe9; padding:10px 14px; border-radius:10px; opacity:0; pointer-events:none; transition:all .2s;
+            border:1px solid rgba(255,255,255,0.03);
+        }
+        .toast.show{ opacity:1; transform:translateX(-50%) translateY(0); pointer-events:auto }
+        @media(max-width:980px){
+            .container{ grid-template-columns: 1fr; }
+            .avatar-wrap{ width:160px; height:160px }
+            h1{ font-size:26px }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="hero" aria-labelledby="name-heading">
+                <div class="avatar-wrap" title="Profil rasmi">
+                    <img id="avatar" class="avatar" src="profile.jpg" alt="Hakimov Dilmurod profili">
+                </div>
+                <div class="hero-info">
+                    <div class="badge">Musiqa • Bot • Web</div>
+                    <h1 id="name-heading">Hakimov Dilmurod</h1>
+                    <p class="sub">19-sentabr, 2011 — Musiqa bot yaratuvchisi</p>
+                    <p class="lead">Salom! Men Telegram uchun musiqani topuvchi va o‘rnatuvchi bot ustida ishlayman. Bu sahifa — mening kontaktlarim va demo sahifam. Botni sinab ko‘rish, menga tez bog‘lanish yoki kontaktni nusxalash mumkin.</p>
+                    <div class="controls" role="group" aria-label="Actions">
+                        <a class="btn primary" id="open-bot" href="https://t.me/music_dilmurodbot" target="_blank" rel="noopener">
+                            ▶ Botni ochish
+                        </a>
+                        <button class="btn" id="copy-ig" title="Instagramni nusxalash">@7__hakimov</button>
+                        <button class="btn" id="copy-phone" title="Telefonni nusxalash">📞 886639991</button>
+                        <a class="btn ghost" id="download-vcard" href="#" download="Hakimov_Dilmurod.vcf">📁 vCard yuklab olish</a>
+                    </div>
+                    <div class="info-row" aria-hidden="false">
+                        <div class="chip">⚡ tez</div>
+                        <div class="chip">🔒 xavfsiz</div>
+                        <div class="chip">📱 responsive</div>
+                    </div>
+                </div>
+            </div>
+            <div style="margin-top:18px; padding-top:8px; border-top:1px dashed rgba(255,255,255,0.03)">
+                <h3 style="margin:0 0 8px 0">Bot haqida tezkor</h3>
+                <p class="sub" style="margin:0 0 12px 0">@music_dilmurodbot — foydalanuvchi yozgan so‘rov bo‘yicha qo‘shiqlarni qidiradi va natijalarni yuboradi. Hozircha Telegram orqali xizmat qiladi; kelajakda API orqali sayt bilan integratsiya bo‘ladi.</p>
+                <div style="display:flex; gap:10px; flex-wrap:wrap">
+                    <button class="btn primary" id="demo">Demo qidiruv: "Adele — Hello"</button>
+                    <button class="btn" id="share">🔗 Sahifani ulashish</button>
+                </div>
+                <div id="demo-result" style="margin-top:12px;color:var(--muted)"></div>
+            </div>
+        </div>
+        <aside class="side card" aria-label="Kontaktlar">
+            <h3>Kontaktlar</h3>
+            <div class="contact-list" role="list">
+                <div class="contact" role="listitem">
+                    <div class="ico">IG</div>
+                    <div>
+                        <div class="meta">@7__hakimov</div>
+                        <div class="sub">Instagram</div>
+                    </div>
+                </div>
+                <div class="contact" role="listitem">
+                    <div class="ico">📞</div>
+                    <div>
+                        <div class="meta">886639991</div>
+                        <div class="sub">Telefon</div>
+                    </div>
+                </div>
+                <div class="contact" role="listitem">
+                    <div class="ico">🤖</div>
+                    <div>
+                        <div class="meta">@music_dilmurodbot</div>
+                        <div class="sub">Telegram bot</div>
+                    </div>
+                </div>
+            </div>
+            <div style="margin-top:14px; display:flex; gap:8px; flex-wrap:wrap">
+                <a class="btn" href="https://instagram.com/7__hakimov" target="_blank" rel="noopener">Instagramga o'tish</a>
+                <a class="btn" href="tel:886639991">Qo'ng'iroq</a>
+                <a class="btn primary" href="https://t.me/music_dilmurodbot" target="_blank" rel="noopener">Botga o'tish</a>
+            </div>
+            <div class="note">Profil rasmi `profile.jpg` bo‘lishi kerak. Agar siz rasm yuklamoqchi bo‘lsangiz, shu papkaga joylashtiring.</div>
+        </aside>
+    </div>
+    <div id="toast" class="toast" role="status" aria-live="polite">Nusxalandi!</div>
+    <script>
+        const toast = document.getElementById('toast');
+        function showToast(msg='Nusxalandi!'){
+            toast.textContent = msg;
+            toast.classList.add('show');
+            clearTimeout(window._t);
+            window._t = setTimeout(()=> toast.classList.remove('show'), 1600);
+        }
+        document.getElementById('copy-ig').addEventListener('click', ()=> {
+            navigator.clipboard?.writeText('@7__hakimov').then(()=> showToast('Instagram nusxalandi!'), ()=> showToast('Clipboardga yozib bo‘lmadi'));
+        });
+        document.getElementById('copy-phone').addEventListener('click', ()=> {
+            navigator.clipboard?.writeText('886639991').then(()=> showToast('Telefon nusxalandi!'), ()=> showToast('Clipboardga yozib bo‘lmadi'));
+        });
+        document.getElementById('demo').addEventListener('click', ()=> {
+            const r = document.getElementById('demo-result');
+            r.textContent = "🔎 'Adele — Hello' bo‘yicha botga so‘rov yuborildi (demo) — Telegram botga o'ting yoki botni ishlating.";
+            showToast('So‘rov yuborildi');
+        });
+        document.getElementById('share').addEventListener('click', async ()=>{
+            const url = location.href;
+            const title = document.title;
+            try{
+                if(navigator.share){
+                    await navigator.share({ title, url });
+                } else {
+                    await navigator.clipboard.writeText(url);
+                    showToast('Sayt manzili nusxalandi');
+                }
+            }catch(e){
+                showToast('Ulashib bo‘lmadi');
+            }
+        });
+        const vcardData = `BEGIN:VCARD
+VERSION:3.0
+N:Hakimov;Dilmurod;;;
+FN:Hakimov Dilmurod
+ORG:Musiqa bot
+TITLE:Developer
+TEL;TYPE=CELL:886639991
+URL:https://t.me/music_dilmurodbot
+EMAIL:
+END:VCARD`;
+        const blob = new Blob([vcardData], {type:'text/vcard'});
+        const vlink = URL.createObjectURL(blob);
+        document.getElementById('download-vcard').href = vlink;
+        const avatar = document.getElementById('avatar');
+        avatar.addEventListener('error', ()=>{
+            avatar.style.display = 'none';
+            const wrap = avatar.parentElement;
+            const svg = document.createElementNS('http://www.w3.org/2000/svg','svg');
+            svg.setAttribute('width','100%'); svg.setAttribute('height','100%'); svg.setAttribute('viewBox','0 0 200 200');
+            svg.innerHTML = `<rect width="100%" height="100%" fill="#081f18"/>
+            <text x="50%" y="52%" fill="${'#12d17a'}" font-size="44" font-family="Arial" font-weight="700" text-anchor="middle">HD</text>`;
+            wrap.appendChild(svg);
+        });
+        window.addEventListener('keydown', (e)=>{
+            if((e.ctrlKey || e.metaKey) && e.key.toLowerCase()==='b'){
+                window.open('https://t.me/music_dilmurodbot','_blank');
+            }
+            if((e.ctrlKey || e.metaKey) && e.key.toLowerCase()==='c'){
+                navigator.clipboard?.writeText('Instagram: @7__hakimov | Tel: 886639991').then(()=> showToast('Kontaktlar nusxalandi'));
+            }
+        });
+    </script>
+</body>
+</html></div>
